@@ -597,7 +597,7 @@ def main():
             if parsed:
                 print "Printing track output..."
                 kmers_in_query = kmers_dict[track_query]
-                LO.print_trackRGB(kmers_in_query,kmer_graded_colours,chrm,strand,num_of_exons,size_of_exons,seq_exons,chromosome_coords,outdir,project_name,query_head,query_seq )
+                #LO.print_trackRGB(kmers_in_query,kmer_graded_colours,chrm,strand,num_of_exons,size_of_exons,seq_exons,chromosome_coords,outdir,project_name,query_head,query_seq )
                 LO.print_trackScore(kmers_in_query,kmer_graded_colours,chrm,strand,num_of_exons,size_of_exons,seq_exons,chromosome_coords,outdir,project_name,query_head,headers,Depth_of_kmers,query_seq )
 
             else:
