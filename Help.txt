@@ -1,0 +1,322 @@
+===================================================================================================================
+                                                      LncLOOM
+                                                    Ulitsky Lab
+                                            Weizmann Institute of Science
+-------------------------------------------------------------------------------------------------------------------
+                                                    Version 1.0
+                                              Release Date: July 2020
+-------------------------------------------------------------------------------------------------------------------
+Caroline Ross: caroline-jane.ross@weizmann.ac.il
+Igor Ulitsky: igor.ulitsky@weizmann.ac.il
+===================================================================================================================
+
+
+
+===================================================================================================================
+                                                  About lncLOOM
+
+lncLOOM is a graph-based framework that uses integer programming to identify combinations of short motifs that are 
+deeply conserved in rapidly evolving sequences. It is implemented in Python 2 and is supported on Linux/Unix-based
+systems. 
+
+===================================================================================================================
+                                                 Getting Started
+
+1) Download lncLOOM
+
+   lncLOOM is available for download at: https://github.com/lncLOOM/lncLOOM
+
+
+2) lncLOOM is implemented in Python 2 and is supported on Linux/Unix-based systems. It is run via the command line.
+
+   Python 2 is available for download at https://www.python.org/downloads/
+
+
+3) The following packages must be installed before running lncLOOM, each can be installed using Pip:
+
+   - Firstly make sure that Pip is installed:
+     $ sudo apt install python-pip 
+
+
+   - networkx
+     $ pip install networkx
+
+
+   - PulP
+     $ pip install pulp
+
+
+   - NumPy
+     $ pip install numpy
+
+
+   - pyBigWig
+     $ pip install pyBigWig
+
+
+   -Biopython
+    $ pip install biopython
+
+
+4) lncLOOM also implements the following programs at various steps in the algorithm. 
+
+   - BLAT (an executable has been included in the src folder of the lncLOOM repository)
+
+   - BLASTN 
+     $ sudo apt-get install ncbi-blast+
+
+   - Mafft
+     To download and setup follow the steps given here: https://mafft.cbrc.jp/alignment/software/linux.html
+
+
+5) Installing the Gurobi Solver 
+
+   Option 1: Install through Anaconda (https://www.gurobi.com/gurobi-and-anaconda-for-linux/).
+
+     - If needed download and install Anaconda (https://www.anaconda.com/products/individual)
+
+     - Add the gurobi channel to the Ananconda search list
+       $ conda config --add channels http://conda.anaconda.org/gurobi
+
+     - install gurobi 
+       $ conda install gurobi
+
+     - Initialise Gurobi License 
+
+       - A free academic license can be obtained from: https://www.gurobi.com/downloads/end-user-license-agreement-academic/
+       - First register an account
+       - Verify your account from a link sent to your email, this will take you to a home page
+       - Click on Licenses (you may be askd to login again)
+       - On the top Navigation bar, select Academia... and Licenses
+       - Click on a link: Free Academic License page,this will issue you a license
+       - Scroll to the bottom of the page to Installation: you will a command similar to this, but specific to your key: 
+         
+         grbgetkey bf3ee984-ccc1-11ea-935f-020d093b5256
+
+       - copy and run this command in your terminal
+
+       Done
+      
+    
+
+   Option 2:
+
+     - Download Gurobi from https://www.gurobi.com/downloads/gurobi-software/
+
+     - Once you have downloaded your version of Gurobi copy the folder to /opt
+
+       $  sudo cp -r gurobi9.0.2_linux64.tar.gz /opt
+
+
+     - Extract the file into /opt
+
+       $  cd /opt/
+       $  sudo tar xvfz gurobi9.0.2_linux64.tar.gz
+
+      - Set environment variables 
+
+        Users of the bash shell should add the following lines to their .bashrc files:
+
+        export GUROBI_HOME="/opt/gurobi902/linux64"
+        export PATH="${PATH}:${GUROBI_HOME}/bin"
+        export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
+
+        Users of the csh shell should add the following lines to their .cshrc files:
+
+        setenv GUROBI_HOME /opt/gurobi902/linux64
+        setenv PATH ${PATH}:${GUROBI_HOME}/bin
+        setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib
+
+        If LD_LIBRARY_PATH is not already set, use the following instead:
+        export LD_LIBRARY_PATH="${GUROBI_HOME}/lib"
+        or
+        setenv LD_LIBRARY_PATH ${GUROBI_HOME}/lib
+
+
+     - Initialise Gurobi License 
+
+       - A free academic license can be obtained from: https://www.gurobi.com/downloads/end-user-license-agreement-academic/
+       - First register an account
+       - Verify your account from a link sent to your email, this will take you to a home page
+       - Click on Licenses (you may be askd to login again)
+       - On the top Navigation bar, select Academia... and Licenses
+       - Click on a link: Free Academic License page,this will issue you a license
+       - Scroll to the bottom of the page to Installation: you will a command similar to this, but specific to your key: 
+         
+         grbgetkey bf3ee984-ccc1-11ea-935f-020d093b5256
+
+       - copy and run this command in your terminal
+
+       Done
+
+
+6) Last step: Set paths to Genome files and eCLIP data that lncLOOM will use for annotations
+
+   1) In the lncLOOM directory there is a file eCLIP.txt. This file tells lncLOOM where to find
+     data needed for annotations. The file looks as follows:
+
+        ------------------------------
+        Query Layer: 1
+        Blat: hg19.fa
+        eCLIP: Data 1: ./narrowPeakApr2019
+        ------------------------------
+
+
+        Explanation:
+        1) The query layer specifies which sequence you would like annotate. By default this will be the top sequence (layer 1) in your input file.
+           Note that lncLOOM always sets the first sequence in your file to the top sequence, but may reorder the other sequences to improve motif
+           discovery. To retain your original order of sequences use the --inputorder command is used.
+
+        2) Blat: specifies the path to a genome file
+
+        3) eCLIP: specifies the paths to eCLIP data. Here you can add multiple paths as follows:
+
+        ------------------------------
+        Query Layer: 1
+        Blat: <specify path to genome fasta file>
+        eCLIP: Data 1: <specify path to eCLIP data>
+        eCLIP: Data 2: <specify path to eCLIP data>
+        eCLIP: Data 3: <specify path to eCLIP data>
+        ------------------------------
+
+       4) Alternatively you can upload a bedfile instead of running Blat
+        ------------------------------
+        Query Layer: 1
+        Bed: <specify path to bedfile>
+        eCLIP: Data 1: <specify path to eCLIP data>
+        ------------------------------
+
+
+    2) In the src folder there is a file: for_track_output.txt
+       Similar to the eCLIP.txt, this file tells lncLOOM where to find a genome file so that a custom track of conserved motifs can be generated.
+       To generate a custom track use the --track option.
+       
+
+       --------------------------
+       Query Layer: 1 
+       Blat: <specify path to genome fasta file>
+       --------------------------   
+
+             
+=================================================================================================================== 
+                                                 Running lncLOOM
+
+1) Run lncLOOM from within your download lncLOOM directory
+
+2) Basic command which invokes all default options:
+
+   python run.py --fasta <path to file of sequences>
+
+3) To save output in a specified directory use the --pname command:
+
+   python run.py --fasta <path to file of sequences> --targetscan --pname <name of directory>
+
+
+4) To annotate motifs with conserved miRNA binding sites from TargetScan, invoke the --targetscan option:
+
+   python run.py --fasta <path to file of sequences> --pname <name of directory> --targetscan
+
+
+5) To annotate motifs based on eCLIP data based on parameters set in eCLIP.txt, use the --eclip eCLIP.txt option:
+
+   python run.py --fasta <path to file of sequences> --pname <name of directory> --targetscan --eclip <path to eCLIP.txt>
+
+6) To perform an empirical statistical analysis, run multiple iterations on random datasets generated by lncLOOM:
+
+   python run.py --fasta <path to file of sequences> --pname <name of directory> --targetscan --eclip <path to eCLIP.txt> --iterations 100
+
+7) To speed things up you can run the statistical iterations in parallel
+
+   python run.py --fasta <path to file of sequences> --pname <name of directory> --targetscan --eclip <path to eCLIP.txt> --iterations 100 --multiprocess 10
+
+  
+8) To generate a custom track of your conserved motifs,coloured by conservation, that can be viewed in Genome Browser, use the --track command:
+   Output will be in bedfile format
+
+   python run.py --fasta <path to file of sequences> --pname <name of directory> --targetscan --eclip <path to eCLIP.txt> --iterations 100 --multiprocess 6 --track
+
+
+===================================================================================================================
+                                                All LncLOOM Options
+
+
+LncLOOM has several options:
+
+REQUIRED
+  
+    --fasta: path to fasta file
+
+
+
+OPTIONAL
+
+--similarity: type is a float, removes all sequences that have identity higher than the specification. Default=100.00
+
+--mindepth: LncLOOM will only find motifs that are conserved to this depth. Default=2
+
+--maxedges: maximum number of edges allowed in any graph, default = 1200, if edges exceed this then no solution is returned
+
+--solver: gurobi or cbc (default = CBC) - gurobi is much faster and has been set up on wexac
+
+--startw: will begin scanning for motifs of this length and then iteratively decrease to a length = stopw (default=15)
+
+--stopw: shortest length of kmer that LncLOOM will search for (default=6).
+
+--outdir: Directory for output (Default: current working directory) 
+
+--pname: name of project, folder is created within outdir and all files are written to this folder (Default: LincMotif)
+
+--select: name of sequence header: LncLOOM will print out all motifs found to the depth of this sequence. Default to print out deepest kmers found 
+
+--prune: removes all kmers that appear more than x number of times in a single sequence. Default = 8
+
+--iterations: number if iterations to run for stats analysis: Default = 0
+
+--multiprocess: LncLOOM will divide the iterations into this number of multiprocesses. Default = 4
+
+--eCLIP: specifiy path to eCLIP.txt file. If this option is used, motifs in the specified layer will be annotated using eCLIP data.
+
+
+--tol5: Tolerance step from median postion of first and last nodes to determine exclusion from 5' extension graphs: type=float,default = 0.50
+--tol3: Tolerance step from median postion of first and last nodes to determine exclusion from 3' extension graphs: type=float,default = 0.50
+
+
+BOOLEAN OPTIONS
+
+The following are boolean options (all defaults are false, by simple typing --option, it will be set to true)
+
+--targetscan: boolean (default=False). If set to true motifs will be annotated from with conserved miRNA sites. 
+
+--inputorder: if set to true, the sequences are not reordered based on homology and the graph is built according to fasta file order of sequences
+
+--track: generates a custom track of conserved motifs, coloured by conservation, that can be viewed in Genome Browser (https://genome.ucsc.edu/)
+
+--hspblast: boolean (default=False), if blast is true then the HSPs are used as constraints to build graph and edges
+
+--noconstraints: shallower simple paths will NOT be used as constraints - much slower for larger datasets
+
+--newcolours: outputs results with a new random colour scheme
+
+--shorttandem: Excludes tandem repeats (complex paths) found in iterations of larger k
+
+
+===================================================================================================================
+                                                   Command Line Examples
+More examples of commands:
+
+python run.py --fasta Chaserr.fas --name Chaserr  --startw 10  --solver gurobi --iterations 100 --multiprocess 10 --eclip eCLIP.txt --targetscan --track
+
+python run.py --fasta Chaserr.fas --name Chaserr  --startw 10  --solver gurobi --iterations 100 --eclip eCLIP.txt --targetscan --track --tol5 0.1 --tol3 0.5
+
+python run.py --fasta Chaserr.fas --pname Chaserr  --startw 10  --solver gurobi --eclip eCLIP.txt --targetscan --inputorder
+
+===================================================================================================================
+
+
+
+
+
+
+
+
+
