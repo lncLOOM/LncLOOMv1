@@ -201,7 +201,7 @@ systems.
 =================================================================================================================== 
                                                  Running lncLOOM
 
-1) Run lncLOOM from within your download lncLOOM directory
+1) Run lncLOOM from within your downloaded lncLOOM directory. This is important as lncLOOM uses files stored in the src folder.
 
 2) Basic command which invokes all default options:
 
