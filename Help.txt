@@ -217,7 +217,7 @@ systems.
    python run.py --fasta <path to file of sequences> --pname <name of directory> --targetscan
 
 
-5) To annotate motifs based on eCLIP data based on parameters set in eCLIP.txt, use the --eclip eCLIP.txt option:
+5) To annotate motifs based on eCLIP data according to the parameters set in eCLIP.txt, use the --eclip eCLIP.txt option:
 
    python run.py --fasta <path to file of sequences> --pname <name of directory> --targetscan --eclip <path to eCLIP.txt>
 
@@ -285,17 +285,17 @@ BOOLEAN OPTIONS
 
 The following are boolean options (all defaults are false, by simple typing --option, it will be set to true)
 
---targetscan: boolean (default=False). If set to true motifs will be annotated from with conserved miRNA sites. 
+--targetscan: boolean (default=False). If set to true motifs will be annotated with conserved miRNA sites, from data obtatined from TargetScan. 
 
 --inputorder: if set to true, the sequences are not reordered based on homology and the graph is built according to fasta file order of sequences
 
 --track: generates a custom track of conserved motifs, coloured by conservation, that can be viewed in Genome Browser (https://genome.ucsc.edu/)
 
---hspblast: boolean (default=False), if blast is true then the HSPs are used as constraints to build graph and edges
+--hspblast: boolean (default=False), if hspblast is true then the High Scoring Segment Pairs are used as constraints to build graph and edges
 
---noconstraints: shallower simple paths will NOT be used as constraints - much slower for larger datasets
+--noconstraints: shallower simple paths will NOT be used as constraints - much slower when used on larger datasets
 
---newcolours: outputs results with a new random colour scheme
+--newcolours: generates output results with a new random colour scheme
 
 --shorttandem: Excludes tandem repeats (complex paths) found in iterations of larger k
 
