@@ -26,7 +26,7 @@ systems.
     `pip install numpy`
    * [pyBigWig](https://github.com/deeptools/pyBigWig)  
     `pip install pyBigWig`
-   * [Biopython](https://biopython.org/) (Version 1.76 is the last release to support python2.7)  
+   * [Biopython](https://biopython.org/) (Version 1.76 is the last release to support python 2.7)  
     `pip install biopython==1.76`
 4. lncLOOM also uses the following programs at various steps in the algorithm.  
    * BLAT (an executable has been included in the 
