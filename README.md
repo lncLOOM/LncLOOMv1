@@ -54,6 +54,7 @@ systems.
      * Scroll to the bottom of the page to Installation: you will see a command similar to this, but specific to your key: `grbgetkey YOUR_KEY`
 
      * copy and run this command in your terminal
+     
    Option 2:
 
      - Download [Gurobi](https://www.gurobi.com/downloads/gurobi-software/)
