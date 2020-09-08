@@ -34,29 +34,25 @@ systems.
    * BLASTN  
    `sudo apt-get install ncbi-blast+`
    * [Mafft](https://mafft.cbrc.jp/alignment/software/)  
-     To download and setup follow the steps given [here](https://mafft.cbrc.jp/alignment/software/linux.html) 
+     To download and setup follow the steps given [here](https://mafft.cbrc.jp/alignment/software/linux.html)  
 
-4. Installing the [Gurobi Solver](https://www.gurobi.com/) - optional but allows much faster performance  
-
-   Option 1: Install through [Anaconda](https://www.gurobi.com/gurobi-and-anaconda-for-linux/).
-   * If needed download and install [Anaconda](https://www.anaconda.com/products/individual)
-   * Add the gurobi channel to the Ananconda search list  
+5. Installing the [Gurobi Solver](https://www.gurobi.com/) - optional but allows much faster performance  
+   - Option 1: Install through [Anaconda](https://www.gurobi.com/gurobi-and-anaconda-for-linux/).  
+     - If needed download and install [Anaconda](https://www.anaconda.com/products/individual)  
+     - Add the gurobi channel to the Ananconda search list   
        `conda config --add channels http://conda.anaconda.org/gurobi`
-   * install gurobi  
+     - install gurobi  
        `conda install gurobi`
-   * Initialise Gurobi License 
-     * A free academic license can be obtained from: [https://www.gurobi.com/downloads/end-user-license-agreement-academic/]
-     * First register an account
-     * Verify your account from a link sent to your email, this will take you to a home page
-     * Click on Licenses (you may be askd to login again)
-     * On the top Navigation bar, select Academia... and Licenses
-     * Click on a link: Free Academic License page,this will issue you a license
-     * Scroll to the bottom of the page to Installation: you will see a command similar to this, but specific to your key: `grbgetkey YOUR_KEY`
-
-     * copy and run this command in your terminal
-     
-   Option 2:
-
+     - Initialise Gurobi License 
+       - A free academic license can be obtained from: [https://www.gurobi.com/downloads/end-user-license-agreement-academic/]
+       - First register an account
+       - Verify your account from a link sent to your email, this will take you to a home page
+       - Click on Licenses (you may be askd to login again)
+       - On the top Navigation bar, select Academia... and Licenses
+       - Click on a link: Free Academic License page,this will issue you a license
+       - Scroll to the bottom of the page to Installation: you will see a command similar to this, but specific to your key: `grbgetkey YOUR_KEY`
+       - Copy and run this command in your terminal  
+   - Option 2:  
      - Download [Gurobi](https://www.gurobi.com/downloads/gurobi-software/)
 
      - Once you have downloaded your version of Gurobi copy the folder to `/opt`
@@ -92,7 +88,6 @@ systems.
 
 
      - Initialise Gurobi License 
-
        - A free academic license can be obtained from: https://www.gurobi.com/downloads/end-user-license-agreement-academic/
        - First register an account
        - Verify your account from a link sent to your email, this will take you to a home page
@@ -103,8 +98,7 @@ systems.
        - copy and run this command in your terminal
 
 
-5. Set paths to genome files and eCLIP data that LncLOOM will use for annotations
-
+6. Set paths to genome files and eCLIP data that LncLOOM will use for annotations
    * In the lncLOOM directory there is a file called `eCLIP.txt`. This file tells lncLOOM where to find data needed for annotations. The file looks as follows:
      ```
            Query Layer: 1
