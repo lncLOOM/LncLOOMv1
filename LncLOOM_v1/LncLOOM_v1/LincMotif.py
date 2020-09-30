@@ -14,7 +14,10 @@ from operator import itemgetter
 import random
 import itertools
 import subprocess
-from gurobipy import *
+try:
+    from gurobipy import *
+except:
+    print("Note: Gurobi Solver Has Not Been Installed")
 from itertools import combinations
 
 def run_mafft_msa(outdir,project_name):
