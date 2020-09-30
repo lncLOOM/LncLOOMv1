@@ -80,7 +80,9 @@ systems.
          eCLIP: Data 1: <specify path to eCLIP data>
          ```
 
-In the LncLOOM_v1/LncLOOM_v1/src/ directory there is also a file: `for_track_output.txt`. Similar to the `for_eclip_annotation.txt`, this file tells LncLOOM where to find a genome file so that a custom track of conserved motifs can be generated. Note that you can specify a different layer and genome to what is specified in  `for_eclip_annotation.txt`
+In the LncLOOM_v1/LncLOOM_v1/src/ directory there is also a file: `for_track_output.txt`. Similar to the `for_eclip_annotation.txt`, this file tells LncLOOM where to find a genome file so that a custom track of conserved motifs can be generated. 
+Note that you can specify a different layer and genome to what is specified in  `for_eclip_annotation.txt`.
+
          To generate a custom track use the `--track` option.
          ```
          Query Layer: 1 
