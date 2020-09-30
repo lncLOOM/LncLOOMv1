@@ -51,7 +51,7 @@ systems.
    * [Biopython](https://biopython.org/) (Version 1.76 is the last release to support python 2.7)  
     `pip install biopython==1.76`
 
-5. Installing the [Gurobi Solver](https://www.gurobi.com/) - optional but allows much faster performance  
+5. Installing the [Gurobi Solver](https://www.gurobi.com/) - OPTIONAL but allows much faster performance  
    - Option 1: Install through [Anaconda](https://www.gurobi.com/gurobi-and-anaconda-for-linux/).  
      - If needed download and install [Anaconda](https://www.anaconda.com/products/individual)  
      - Add the gurobi channel to the Ananconda search list   
