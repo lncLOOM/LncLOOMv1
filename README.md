@@ -52,7 +52,8 @@ systems.
            Blat: /home/caroline/hg19.fa
            eCLIP: Data 1: /home/caroline/eCLIP/narrowPeakApr2019
      ```
-     To annotated with the eCLIP specified in `for_eclip_annotation.txt` use the `--eclip` option
+     Please update these paths to the full paths to your genome file and eCLIP data
+     To annotate with eCLIP data specified in `for_eclip_annotation.txt` use the `--eclip` option
      - Explanation:
        * The query layer specifies which sequence you would like annotate. By default this will be the top sequence (layer 1) in your input file.
               Note that LncLOOM always sets the first sequence in your file to the top sequence, but may reorder the other sequences to improve motif
