@@ -233,7 +233,7 @@ LncLOOM has several options:
 The following are boolean options (all defaults are false, by simple typing --option, it will be set to true)
 
 * `--targetscan` boolean (default=False). If set to true motifs will be annotated with conserved miRNA sites, from data obtatined from TargetScan.
-* `--eclip`: boolean (default=False). If set to true, motifs in the specified layer (`src/for_eclip_annotation.txt`) will be annotated using eCLIP data.
+* `--eclip`: boolean (default=False). If set to true, motifs in the specified layer `src/for_eclip_annotation.txt` will be annotated using eCLIP data.
 * `--inputorder` if set to true, the sequences are not reordered based on homology and the graph is built according to fasta file order of sequences
 * `--track` generates a custom track of conserved motifs, coloured by conservation, that can be viewed in Genome Browser (https://genome.ucsc.edu/)
 * `--hspblast` boolean (default=False), if hspblast is true then the High Scoring Segment Pairs are used as constraints to build graph and edges
