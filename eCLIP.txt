@@ -1,3 +1,0 @@
-Query Layer: 1
-Blat: hg19.fa
-eCLIP: Data 1: ./narrowPeakApr2019
