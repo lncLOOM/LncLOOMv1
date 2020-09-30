@@ -25,7 +25,7 @@ systems.
    Python 2 is available for download.
 <A HREF="https://www.python.org/downloads/">here</A>
 
-3. Once downloaded, LncLOOM can be installed as an executable using pip
+3. Once the repository is downloaded, LncLOOM_v1 can be installed as an executable using pip
 
    * Firstly make sure that [pip](https://pypi.org/project/pip/) is installed:  
      `sudo apt install python-pip`
@@ -56,7 +56,49 @@ systems.
    * [Biopython](https://biopython.org/) (Version 1.76 is the last release to support python 2.7)  
     `pip install biopython==1.76`
 
-5. Installing the [Gurobi Solver](https://www.gurobi.com/) - OPTIONAL but allows much faster performance  
+
+
+5. Set paths to genome files and eCLIP data that LncLOOM will use for annotations and generation of a custom track for the UCSC Genome Browser 
+   * In the LncLOOM_v1/LncLOOM_v1/src/ directory there is a file called `for_eclip_annotation.txt`. This file tells LncLOOM where to find data needed for annotations. The file looks as follows:
+     ```
+           Query Layer: 1
+           Blat: /home/caroline/hg19.fa
+           eCLIP: Data 1: /home/caroline/eCLIP/narrowPeakApr2019
+     ```
+     To annotated with the eCLIP specified in `for_eclip_annotation.txt` use the `--eclip` option
+     - Explanation:
+       * The query layer specifies which sequence you would like annotate. By default this will be the top sequence (layer 1) in your input file.
+              Note that LncLOOM always sets the first sequence in your file to the top sequence, but may reorder the other sequences to improve motif
+              discovery. To retain your original order of sequences use the `--inputorder` command is used. 
+
+       * Blat: specifies the full path to a genome file
+
+       * eCLIP: specifies the full paths to eCLIP data. Note: you can add multiple paths as follows:
+
+         ```
+         Query Layer: 1
+         Blat: <specify path to genome fasta file>
+         eCLIP: Data 1: <specify path to eCLIP data>
+         eCLIP: Data 2: <specify path to eCLIP data>
+         eCLIP: Data 3: <specify path to eCLIP data>
+         ```
+
+         Alternatively you can upload a bedfile instead of running Blat
+         ```
+         Query Layer: 1
+         Bed: <specify path to bedfile>
+         eCLIP: Data 1: <specify path to eCLIP data>
+         ```
+
+In the LncLOOM_v1/LncLOOM_v1/src/ directory there is also a file: `for_track_output.txt`. Similar to the `for_eclip_annotation.txt`, this file tells LncLOOM where to find a genome file so that a custom track of conserved motifs can be generated. Note that you can specify a different layer and genome to what is specified in  `for_eclip_annotation.txt`
+         To generate a custom track use the `--track` option.
+         ```
+         Query Layer: 1 
+         Blat: <specify path to genome fasta file>
+         ```
+         
+6. OPTIONAL: Install the [Gurobi Solver](https://www.gurobi.com/) - although not required it allows much faster performance on larger datasets
+   There are two possible ways to install Gurobi:
    - Option 1: Install through [Anaconda](https://www.gurobi.com/gurobi-and-anaconda-for-linux/).  
      - If needed download and install [Anaconda](https://www.anaconda.com/products/individual)  
      - Add the gurobi channel to the Ananconda search list   
@@ -116,46 +158,6 @@ systems.
        - Click on a link: Free Academic License page,this will issue you a license
        - Scroll to the bottom of the page to Installation: you will a command similar to this, but specific to your key: `grbgetkey YOUR_KEY`
        - copy and run this command in your terminal
-
-
-6. Set paths to genome files and eCLIP data that LncLOOM will use for annotations and generation of a custom track for the UCSC Genome Browser 
-   * In the LncLOOM_v1/LncLOOM_v1/src/ directory there is a file called `for_eclip_annotation.txt`. This file tells LncLOOM where to find data needed for annotations. The file looks as follows:
-     ```
-           Query Layer: 1
-           Blat: /home/caroline/hg19.fa
-           eCLIP: Data 1: /home/caroline/eCLIP/narrowPeakApr2019
-     ```
-     To annotated with the eCLIP specified in `for_eclip_annotation.txt` use the `--eclip` option
-     - Explanation:
-       * The query layer specifies which sequence you would like annotate. By default this will be the top sequence (layer 1) in your input file.
-              Note that LncLOOM always sets the first sequence in your file to the top sequence, but may reorder the other sequences to improve motif
-              discovery. To retain your original order of sequences use the `--inputorder` command is used. 
-
-       * Blat: specifies the full path to a genome file
-
-       * eCLIP: specifies the full paths to eCLIP data. Note: you can add multiple paths as follows:
-
-         ```
-         Query Layer: 1
-         Blat: <specify path to genome fasta file>
-         eCLIP: Data 1: <specify path to eCLIP data>
-         eCLIP: Data 2: <specify path to eCLIP data>
-         eCLIP: Data 3: <specify path to eCLIP data>
-         ```
-
-         Alternatively you can upload a bedfile instead of running Blat
-         ```
-         Query Layer: 1
-         Bed: <specify path to bedfile>
-         eCLIP: Data 1: <specify path to eCLIP data>
-         ```
-
-In the LncLOOM_v1/LncLOOM_v1/src/ directory there is also a file: `for_track_output.txt`. Similar to the `for_eclip_annotation.txt`, this file tells LncLOOM where to find a genome file so that a custom track of conserved motifs can be generated. Note that you can specify a different layer and genome to what is specified in  `for_eclip_annotation.txt`
-         To generate a custom track use the `--track` option.
-         ```
-         Query Layer: 1 
-         Blat: <specify path to genome fasta file>
-         ```
          
 ## Running LncLOOM
 
