@@ -1,3 +1,3 @@
 Query Layer: 1
-Blat: /home/caroline/LncLOOM_v1/LncLOOM_v1/src/hg19.fa
+Blat: /home/caroline/hg19.fa
 eCLIP: Data 1: /home/caroline/eCLIP/narrowPeakApr2019

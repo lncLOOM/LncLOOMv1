@@ -16,5 +16,5 @@ setup(
     entry_points={
         'console_scripts': ['LncLOOM=LncLOOM_v1.LncLOOM:main']
     },
-    package_data={'LncLOOM_v1': ['src/for_track_output.txt','src/for_eclip_annotation.txt','src/Kmer_colour_code.txt','src/blat','src/hg19.fa','src/species100.html','src/miR_Family_Info.txt','src/logo.png']}
+    package_data={'LncLOOM_v1': ['src/for_track_output.txt','src/for_eclip_annotation.txt','src/Kmer_colour_code.txt','src/blat','src/species100.html','src/miR_Family_Info.txt','src/logo.png']}
 )
