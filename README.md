@@ -35,7 +35,7 @@ systems.
 
     *If you are unable to install using pip, please see examples in the last section of this file on how to run LncLOOM from within the LncLOOM_v1 directory.
 
-4. LncLOOM requires several packages to be installed. Most of these would have already been installed when you installed LncLOOM_v1. 
+4. LncLOOM requires several packages to be installed. Most of these would have already been installed when you installed LncLOOM_v1 (see last section for list of packages). 
    However the following additional programs must be installed individually:
    
    * BLASTN  
@@ -43,19 +43,6 @@ systems.
    * [Mafft](https://mafft.cbrc.jp/alignment/software/)  
      To download and setup follow the steps given [here](https://mafft.cbrc.jp/alignment/software/linux.html)
      
-     
-   Note: The following packages should have been automatically installed in step 3. However, if this was unsuccessful each package can be installed with pip:
-   * [networkx](https://networkx.github.io/)  
-    `pip install networkx`
-   * [PulP](https://github.com/pulp/pulp)  
-    `pip install pulp`
-   * [NumPy](https://numpy.org/)  
-    `pip install numpy`
-   * [pyBigWig](https://github.com/deeptools/pyBigWig)  
-    `pip install pyBigWig`
-   * [Biopython](https://biopython.org/) (Version 1.76 is the last release to support python 2.7)  
-    `pip install biopython==1.76`
-
 
 
 5. Set paths to genome files and eCLIP data that LncLOOM will use for annotations and generation of a custom track for the UCSC Genome Browser 
@@ -268,6 +255,19 @@ More examples of commands:
 
 
 ## Running LncLOOM (If installation with pip was not successful)
+
+   Note: The following packages should have been automatically installed in step 3. However, if this was unsuccessful each package must be installed individually:
+   * [networkx](https://networkx.github.io/)  
+    `pip install networkx`
+   * [PulP](https://github.com/pulp/pulp)  
+    `pip install pulp`
+   * [NumPy](https://numpy.org/)  
+    `pip install numpy`
+   * [pyBigWig](https://github.com/deeptools/pyBigWig)  
+    `pip install pyBigWig`
+   * [Biopython](https://biopython.org/) (Version 1.76 is the last release to support python 2.7)  
+    `pip install biopython==1.76`
+
 
 * Run lncLOOM from within the downloaded LncLOOM_v1 directory. This is important as LncLOOM uses files stored in the src folder.
 * Change your directory to LncLOOM_v1/LncLOOM_v1:
