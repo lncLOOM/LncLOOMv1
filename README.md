@@ -14,6 +14,7 @@ systems.
 ## Getting Started
 
 1. Download the lncLOOM repository.
+
    `git clone https://github.com/lncLOOM/lncLOOM.git`
    
    `cd lncLOOM`
