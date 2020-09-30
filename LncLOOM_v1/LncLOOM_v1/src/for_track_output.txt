@@ -1,0 +1,3 @@
+Query Layer: 1
+Blat: /home/caroline/LncLOOM_v1/LncLOOM_v1/src/hg19.fa
+Bed:
