@@ -13,11 +13,31 @@ systems.
 
 ## Getting Started
 
-1. Download lncLOOM from this repository.
-2. lncLOOM is implemented in Python 2 and is supported on Linux/Unix-based systems. It is run via the command line. Python 2 is available for download <A HREF="https://www.python.org/downloads/">here</A>
-3. The following packages must be installed before running lncLOOM, each can be installed using Pip:
+1. Download LncLOOM_v1 from this repository.
+2. LncLOOM is currently implemented in Python 2 and is supported on Linux/Unix-based systems. It is run via the command line. 
+   A new version that is Python3 compatible will be available  soon.
+   
+   Python 2 is available for download.
+<A HREF="https://www.python.org/downloads/">here</A>
+
+3. Once downloaded, LncLOOM can be installed as an executable using pip
    * Firstly make sure that [pip](https://pypi.org/project/pip/) is installed:  
      `sudo apt install python-pip`
+    * Install LncLOOM_v1 using pip  
+     `pip install --user -e ./LncLOOM_v1`
+
+*If you are unable to install using pip, please see examples in the last section of this file on how to run LncLOOM from within the LncLOOM_v1 directory.
+
+4. LncLOOM requires several packages to be installed. Most of these would have already been installed when you installed LncLOOM_v1. 
+   However the following additional programs must be installed individually:
+   
+   * BLASTN  
+   `sudo apt-get install ncbi-blast+`
+   * [Mafft](https://mafft.cbrc.jp/alignment/software/)  
+     To download and setup follow the steps given [here](https://mafft.cbrc.jp/alignment/software/linux.html)
+     
+     
+   Note: The following packages should have been automatically installed in step 3. However, if this was unsuccessful each package can be installed with pip:
    * [networkx](https://networkx.github.io/)  
     `pip install networkx`
    * [PulP](https://github.com/pulp/pulp)  
@@ -28,13 +48,6 @@ systems.
     `pip install pyBigWig`
    * [Biopython](https://biopython.org/) (Version 1.76 is the last release to support python 2.7)  
     `pip install biopython==1.76`
-4. lncLOOM also uses the following programs at various steps in the algorithm.  
-   * BLAT (an executable has been included in the 
-   folder of the lncLOOM repository)  
-   * BLASTN  
-   `sudo apt-get install ncbi-blast+`
-   * [Mafft](https://mafft.cbrc.jp/alignment/software/)  
-     To download and setup follow the steps given [here](https://mafft.cbrc.jp/alignment/software/linux.html)  
 
 5. Installing the [Gurobi Solver](https://www.gurobi.com/) - optional but allows much faster performance  
    - Option 1: Install through [Anaconda](https://www.gurobi.com/gurobi-and-anaconda-for-linux/).  
@@ -98,22 +111,22 @@ systems.
        - copy and run this command in your terminal
 
 
-6. Set paths to genome files and eCLIP data that LncLOOM will use for annotations
-   * In the lncLOOM directory there is a file called `eCLIP.txt`. This file tells lncLOOM where to find data needed for annotations. The file looks as follows:
+6. Set paths to genome files and eCLIP data that LncLOOM will use for annotations and generation of a custom track for the UCSC Genome Browser 
+   * In the LncLOOM_v1/LncLOOM_v1/src/ directory there is a file called `for_eclip_annotation.txt`. This file tells LncLOOM where to find data needed for annotations. The file looks as follows:
      ```
            Query Layer: 1
-           Blat: hg19.fa
-           eCLIP: Data 1: ./narrowPeakApr2019
+           Blat: /home/caroline/hg19.fa
+           eCLIP: Data 1: /home/caroline/eCLIP/narrowPeakApr2019
      ```
-
+     To annotated with the eCLIP specified in `for_eclip_annotation.txt` use the `--eclip` option
      - Explanation:
        * The query layer specifies which sequence you would like annotate. By default this will be the top sequence (layer 1) in your input file.
-              Note that lncLOOM always sets the first sequence in your file to the top sequence, but may reorder the other sequences to improve motif
-              discovery. To retain your original order of sequences use the `--inputorder` command is used.
+              Note that LncLOOM always sets the first sequence in your file to the top sequence, but may reorder the other sequences to improve motif
+              discovery. To retain your original order of sequences use the `--inputorder` command is used. 
 
-       * Blat: specifies the path to a genome file
+       * Blat: specifies the full path to a genome file
 
-       * eCLIP: specifies the paths to eCLIP data. Here you can add multiple paths as follows:
+       * eCLIP: specifies the full paths to eCLIP data. Note: you can add multiple paths as follows:
 
          ```
          Query Layer: 1
@@ -130,47 +143,47 @@ systems.
          eCLIP: Data 1: <specify path to eCLIP data>
          ```
 
-         In the src folder there is a file: `for_track_output.txt`. Similar to the `eCLIP.txt`, this file tells LncLOOM where to find a genome file so that a custom track of conserved motifs can be generated.  
+In the LncLOOM_v1/LncLOOM_v1/src/ directory there is also a file: `for_track_output.txt`. Similar to the `for_eclip_annotation.txt`, this file tells LncLOOM where to find a genome file so that a custom track of conserved motifs can be generated. Note that you can specify a different layer and genome to what is specified in  `for_eclip_annotation.txt`
          To generate a custom track use the `--track` option.
          ```
          Query Layer: 1 
          Blat: <specify path to genome fasta file>
-         ````
-             
-## Running lncLOOM
+         ```
+         
+## Running LncLOOM
 
-* Run lncLOOM from within your downloaded lncLOOM directory. This is important as lncLOOM uses files stored in the src folder.
-* Basic command which invokes all default options:
+* Basic command to run LncLOOM which invokes all default options:
   ```
-   python run.py --fasta <path to file of sequences>
+   LncLOOM --fasta <path to file of sequences>
   ```
 * To save output in a specified directory use the `--pname` command:
   ```
-   python run.py --fasta <path to file of sequences> --targetscan --pname <name of directory>
+   LncLOOM --fasta <path to file of sequences> --targetscan --pname <name of directory>
   ```
 * To annotate motifs with conserved miRNA binding sites from [TargetScan](http://www.targetscan.org/), invoke the `--targetscan` option:
   ```
-   python run.py --fasta <path to file of sequences> --pname <name of directory> --targetscan
+   LncLOOM --fasta <path to file of sequences> --pname <name of directory> --targetscan
   ```
 
-* To annotate motifs based on eCLIP data according to the parameters set in eCLIP.txt, use the `--eclip eCLIP.txt` option:
+* To annotate motifs based on eCLIP data according to the parameters set in src/for_eclip_annotation.txt, use the `--eclip` option:
   ```
-   python run.py --fasta <path to file of sequences> --pname <name of directory> --targetscan --eclip <path to eCLIP.txt>
+   LncLOOM --fasta <path to file of sequences> --pname <name of directory> --targetscan --eclip
   ```
 * To perform an empirical statistical analysis, run multiple iterations on random datasets generated by LncLOOM:
   ```
-   python run.py --fasta <path to file of sequences> --pname <name of directory> --targetscan --eclip <path to eCLIP.txt> --iterations 100
+   LncLOOM --fasta <path to file of sequences> --pname <name of directory> --targetscan --eclip --iterations 100
   ```
 * To speed things up you can run the statistical iterations in parallel
   ```
-  python run.py --fasta <path to file of sequences> --pname <name of directory> --targetscan --eclip <path to eCLIP.txt> --iterations 100 --multiprocess 10
+  LncLOOM --fasta <path to file of sequences> --pname <name of directory> --targetscan --eclip --iterations 100 --multiprocess 10
   ```
   
 * To generate a custom track of your conserved motifs,coloured by conservation, that can be viewed in Genome Browser, use the `--track` command:
   Output will be in bedfile format
   ```
-  python run.py --fasta <path to file of sequences> --pname <name of directory> --targetscan --eclip <path to eCLIP.txt> --iterations 100 --multiprocess 6 --track
+  LncLOOM --fasta <path to file of sequences> --pname <name of directory> --targetscan --eclip --iterations 100 --multiprocess 6 --track
   ```
+
 
 ## All LncLOOM Options
 
@@ -208,8 +221,6 @@ LncLOOM has several options:
 
 * `--multiprocess`: LncLOOM will divide the iterations into this number of processes. Default = 4
 
-* `--eCLIP`: Specifies the path to `eCLIP.txt` file. If this option is used, motifs in the specified layer will be annotated using eCLIP data.
-
 * `--tol5`: Tolerance step from median postion of first and last nodes to determine exclusion from 5' extension graphs. Default = 0.50
     
 * `--tol3`: Tolerance step from median postion of first and last nodes to determine exclusion from 3' extension graphs. Default = 0.50
@@ -219,7 +230,8 @@ LncLOOM has several options:
 
 The following are boolean options (all defaults are false, by simple typing --option, it will be set to true)
 
-* `--targetscan` boolean (default=False). If set to true motifs will be annotated with conserved miRNA sites, from data obtatined from TargetScan. 
+* `--targetscan` boolean (default=False). If set to true motifs will be annotated with conserved miRNA sites, from data obtatined from TargetScan.
+* `--eclip`: boolean (default=False). If set to true, motifs in the specified layer (src/for_eclip_annotation.txt) will be annotated using eCLIP data.
 * `--inputorder` if set to true, the sequences are not reordered based on homology and the graph is built according to fasta file order of sequences
 * `--track` generates a custom track of conserved motifs, coloured by conservation, that can be viewed in Genome Browser (https://genome.ucsc.edu/)
 * `--hspblast` boolean (default=False), if hspblast is true then the High Scoring Segment Pairs are used as constraints to build graph and edges
@@ -233,17 +245,55 @@ The following are boolean options (all defaults are false, by simple typing --op
 More examples of commands:
 
    ```
-   python run.py --fasta Chaserr.fas --name Chaserr  --startw 10  --solver gurobi --iterations 100 --multiprocess 10 --eclip eCLIP.txt --targetscan --track
+   LncLOOM --fasta Chaserr.fas --name Chaserr  --startw 10  --solver gurobi --iterations 100 --multiprocess 10 --eclip --targetscan --track
    ```
    ```
-   python run.py --fasta Chaserr.fas --name Chaserr  --startw 10  --solver gurobi --iterations 100 --eclip eCLIP.txt --targetscan --track --tol5 0.1 --tol3 0.5
+   LncLOOM --fasta Chaserr.fas --name Chaserr  --startw 10  --solver gurobi --iterations 100 --eclip --targetscan --track --tol5 0.1 --tol3 0.5
    ```
    ```
-   python run.py --fasta Chaserr.fas --pname Chaserr  --startw 10  --solver gurobi --eclip eCLIP.txt --targetscan --inputorder`
+   LncLOOM --fasta Chaserr.fas --pname Chaserr  --startw 10  --solver gurobi --eclip --targetscan --inputorder`
    ```
 
 
 
+## Running LncLOOM (If installation with pip was not successful)
+
+* Run lncLOOM from within the downloaded LncLOOM_v1 directory. This is important as LncLOOM uses files stored in the src folder.
+* Change your directory to LncLOOM_v1/LncLOOM_v1:
+  ```
+   cd ./LncLOOM_v1/LncLOOM_v1
+  ```
+* Basic command to run LncLOOM which invokes all default options:
+  ```
+   python LncLOOM.py --fasta <path to file of sequences>
+  ```
+* To save output in a specified directory use the `--pname` command:
+  ```
+   python LncLOOM.py --fasta <path to file of sequences> --targetscan --pname <name of directory>
+  ```
+* To annotate motifs with conserved miRNA binding sites from [TargetScan](http://www.targetscan.org/), invoke the `--targetscan` option:
+  ```
+   python LncLOOM.py --fasta <path to file of sequences> --pname <name of directory> --targetscan
+  ```
+
+* To annotate motifs based on eCLIP data according to the parameters set in src/for_eclip_annotation.txt, use the `--eclip` option:
+  ```
+   python LncLOOM.py --fasta <path to file of sequences> --pname <name of directory> --targetscan --eclip
+  ```
+* To perform an empirical statistical analysis, run multiple iterations on random datasets generated by LncLOOM:
+  ```
+   python LncLOOM.py --fasta <path to file of sequences> --pname <name of directory> --targetscan --eclip --iterations 100
+  ```
+* To speed things up you can run the statistical iterations in parallel
+  ```
+  python LncLOOM.py --fasta <path to file of sequences> --pname <name of directory> --targetscan --eclip --iterations 100 --multiprocess 10
+  ```
+  
+* To generate a custom track of your conserved motifs,coloured by conservation, that can be viewed in Genome Browser, use the `--track` command:
+  Output will be in bedfile format
+  ```
+  python LncLOOM.py --fasta <path to file of sequences> --pname <name of directory> --targetscan --eclip --iterations 100 --multiprocess 6 --track
+  ```
 
 
 
