@@ -21,12 +21,14 @@ systems.
 <A HREF="https://www.python.org/downloads/">here</A>
 
 3. Once downloaded, LncLOOM can be installed as an executable using pip
+
    * Firstly make sure that [pip](https://pypi.org/project/pip/) is installed:  
      `sudo apt install python-pip`
+     
     * Install LncLOOM_v1 using pip  
      `pip install --user -e ./LncLOOM_v1`
 
-*If you are unable to install using pip, please see examples in the last section of this file on how to run LncLOOM from within the LncLOOM_v1 directory.
+    *If you are unable to install using pip, please see examples in the last section of this file on how to run LncLOOM from within the LncLOOM_v1 directory.
 
 4. LncLOOM requires several packages to be installed. Most of these would have already been installed when you installed LncLOOM_v1. 
    However the following additional programs must be installed individually:
@@ -165,7 +167,7 @@ In the LncLOOM_v1/LncLOOM_v1/src/ directory there is also a file: `for_track_out
    LncLOOM --fasta <path to file of sequences> --pname <name of directory> --targetscan
   ```
 
-* To annotate motifs based on eCLIP data according to the parameters set in src/for_eclip_annotation.txt, use the `--eclip` option:
+* To annotate motifs based on eCLIP data according to the parameters set in `src/for_eclip_annotation.txt`, use the `--eclip` option:
   ```
    LncLOOM --fasta <path to file of sequences> --pname <name of directory> --targetscan --eclip
   ```
@@ -231,7 +233,7 @@ LncLOOM has several options:
 The following are boolean options (all defaults are false, by simple typing --option, it will be set to true)
 
 * `--targetscan` boolean (default=False). If set to true motifs will be annotated with conserved miRNA sites, from data obtatined from TargetScan.
-* `--eclip`: boolean (default=False). If set to true, motifs in the specified layer (src/for_eclip_annotation.txt) will be annotated using eCLIP data.
+* `--eclip`: boolean (default=False). If set to true, motifs in the specified layer (`src/for_eclip_annotation.txt`) will be annotated using eCLIP data.
 * `--inputorder` if set to true, the sequences are not reordered based on homology and the graph is built according to fasta file order of sequences
 * `--track` generates a custom track of conserved motifs, coloured by conservation, that can be viewed in Genome Browser (https://genome.ucsc.edu/)
 * `--hspblast` boolean (default=False), if hspblast is true then the High Scoring Segment Pairs are used as constraints to build graph and edges
@@ -253,7 +255,9 @@ More examples of commands:
    ```
    LncLOOM --fasta Chaserr.fas --pname Chaserr  --startw 10  --solver gurobi --eclip --targetscan --inputorder`
    ```
-
+   ```
+   LncLOOM --fasta Chaserr.fas --pname Chaserr  --startw 10  --solver gurobi --eclip --targetscan --inputorder --newcolours`
+   ```
 
 
 ## Running LncLOOM (If installation with pip was not successful)
