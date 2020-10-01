@@ -47,7 +47,7 @@ systems.
    
     *Note: the above paths to LncLOOM may vary dependent on the names of your directories
     
-    *If you are unable to install using pip, please see examples in the last section of this file on how to run LncLOOM from within the LncLOOM_v1 directory.
+    **If you are unable to install using pip, please see examples in the last section of this file on how to run LncLOOM from within the LncLOOM_v1 directory.
 
 4. LncLOOM requires several packages to be installed. Most of these would have already been installed when you installed LncLOOM_v1 (see last section of this page for a list of these packages). 
    However the following additional programs must be installed individually:
