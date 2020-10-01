@@ -30,7 +30,7 @@ systems.
    * Firstly make sure that [pip](https://pypi.org/project/pip/) is installed:  
      `sudo apt install python-pip`
      
-    * Install LncLOOM_v1 using pip (make sure that it is setup to run with python2)  
+    * Install LncLOOM_v1 using pip (here it is setup to run with python2)  
      `python2 -m pip install --user -e ./LncLOOM_v1`
 
     *If you are unable to install using pip, please see examples in the last section of this file on how to run LncLOOM from within the LncLOOM_v1 directory.
