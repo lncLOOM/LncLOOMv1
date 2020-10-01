@@ -48,8 +48,7 @@ systems.
     *Note: the above paths to LncLOOM may vary dependent on the names of your directories
     
     
-    ```
-    diff
+    ```diff
     - If you are unable to install using pip, please see examples in the last section of this file on how to run LncLOOM from within the LncLOOM_v1 directory.
     ```
 
