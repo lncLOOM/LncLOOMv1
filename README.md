@@ -30,7 +30,8 @@ systems.
    * Firstly make sure that [pip](https://pypi.org/project/pip/) is installed:  
      `sudo apt install python-pip`
      
-     or
+      macOS:
+     
      `sudo easy_install pip`
      
     * Install LncLOOM_v1 using pip (the following command ensures that it is setup to run with python2)  
