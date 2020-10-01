@@ -27,13 +27,16 @@ systems.
 
 3. Once the repository is downloaded, LncLOOM_v1 can be installed as an executable using pip
 
-   * Firstly make sure that [pip](https://pypi.org/project/pip/) is installed:  
+   * Firstly make sure that [pip](https://pypi.org/project/pip/) is installed:
+   
      `sudo apt install python-pip`
      
       if you are using macOS:
+      
      `sudo easy_install pip`
      
-    * Install LncLOOM_v1 using pip (the following command ensures that it is setup to run with python2)  
+    * Install LncLOOM_v1 using pip (the following command ensures that it is setup to run with python2) 
+    
      `python2 -m pip install --user -e ./LncLOOM_v1`
 
     * Add LncLOOM to your $PATH. pip creates a LncLOOM executable. Depending on your OS, this executable will be saved to certain directory, which needs
@@ -56,8 +59,10 @@ systems.
 4. LncLOOM requires several packages to be installed. Most of these would have already been installed when you installed LncLOOM_v1 (see last section of this page for a list of these packages). 
    However the following additional programs must be installed individually:
    
-   * BLASTN  
+   * BLASTN 
+   
    `sudo apt-get install ncbi-blast+`
+   
    * [Mafft](https://mafft.cbrc.jp/alignment/software/)  
      To download and setup follow the steps given [here](https://mafft.cbrc.jp/alignment/software/linux.html)
      
