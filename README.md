@@ -36,12 +36,12 @@ systems.
     * Add LncLOOM to your $PATH. pip creates a LncLOOM executable. Depending on your OS, this executable will be saved to certain directory, which will need
       to be added to your path:
       
-      For Linux systems LncLOOM will be saved in ~/.local/bin/ (or /home/<you>/.local/bin: )
+      For Linux systems, LncLOOM will be saved in ~/.local/bin/ (or /home/<you>/.local/bin: )
       
          `export PATH="~/.local/bin:$PATH"`    
           
       
-      For macOS LncLOOM will be saved in /Users/Mac/Library/Python/2.7/bin (or /Users/<you>/Library/Python/2.7/bin)
+      For macOS, LncLOOM will be saved in /Users/Mac/Library/Python/2.7/bin (or /Users/<you>/Library/Python/2.7/bin)
       
          `export PATH="/Users/Mac/Library/Python/2.7/bin:$PATH"`
    
