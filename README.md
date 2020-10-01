@@ -47,10 +47,10 @@ systems.
    
     *Note: the above paths to LncLOOM may vary dependent on the names of your directories
     
-    ```html
-    <span style="color:red"> If you are unable to install using pip, please see examples in the last section of 
-       this file on how to run LncLOOM from within the LncLOOM_v1 directory.</span>
-    ```
+
+   color.Red("If you are unable to install using pip, please see examples in the last section of 
+       this file on how to run LncLOOM from within the LncLOOM_v1 directory")
+
     
 
 
