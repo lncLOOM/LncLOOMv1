@@ -38,11 +38,12 @@ systems.
       
       For Linux systems LncLOOM will be saved in ~/.local/bin/ (or /home/<you>/.local/bin: )
       
-      `export PATH="~/.local/bin:$PATH"`    alternatively: `export PATH="/home/<you>/.local/bin:$PATH"`
+         `export PATH="~/.local/bin:$PATH"`    
+          alternatively: `export PATH="/home/<you>/.local/bin:$PATH"`
       
       For macOS LncLOOM will be saved in /Users/Mac/Library/Python/2.7/bin (or /Users/<you>/Library/Python/2.7/bin)
       
-     `export PATH="/Users/Mac/Library/Python/2.7/bin:$PATH"`
+         `export PATH="/Users/Mac/Library/Python/2.7/bin:$PATH"`
    
     *Note: the above paths to LncLOOM may vary dependent on the names of your directories
     
