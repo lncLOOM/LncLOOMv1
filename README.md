@@ -30,9 +30,22 @@ systems.
    * Firstly make sure that [pip](https://pypi.org/project/pip/) is installed:  
      `sudo apt install python-pip`
      
-    * Install LncLOOM_v1 using pip (here it is setup to run with python2)  
+    * Install LncLOOM_v1 using pip (the following command ensures that it is setup to run with python2)  
      `python2 -m pip install --user -e ./LncLOOM_v1`
 
+    * Add LncLOOM to your $PATH. pip creates a LncLOOM executable. Depending on your OS, this executable will be saved to certain directory, which will need
+      to be added to your path:
+      
+      For Linux systems LncLOOM will be saved in ~/.local/bin/ (or /home/<you>/.local/bin: )
+      
+      `export PATH="~/.local/bin:$PATH"`    alternatively: `export PATH="/home/<you>/.local/bin:$PATH"`
+      
+      For macOS LncLOOM will be saved in /Users/Mac/Library/Python/2.7/bin (or /Users/<you>/Library/Python/2.7/bin)
+      
+     `export PATH="/Users/Mac/Library/Python/2.7/bin:$PATH"`
+   
+    *Note: the above paths to LncLOOM may vary dependent on the names of your directories
+    
     *If you are unable to install using pip, please see examples in the last section of this file on how to run LncLOOM from within the LncLOOM_v1 directory.
 
 4. LncLOOM requires several packages to be installed. Most of these would have already been installed when you installed LncLOOM_v1 (see last section of this page for a list of these packages). 
