@@ -621,7 +621,7 @@ def solve_lpp(G,solver):
         if solver=='GUROBI':
             prob.solve(pulp.GUROBI(msg=0))
         elif solver=='CBC':
-            prob.solve()
+            prob.solve(pulp.PULP_CBC_CMD(msg=0))
         #Construct Solution Graph
         for v in prob.variables():
             #if the edge got a score of 1 (meaning, it is within the solution):
@@ -709,7 +709,7 @@ def solve_lpp(G,solver):
 
 
         elif solver=='CBC':
-            prob.solve()
+            prob.solve(pulp.PULP_CBC_CMD(msg=0))
   
 
         #Construct Solution Graph
@@ -1699,7 +1699,7 @@ def solve_lpp_optimise(G,C,solver,level,maxedges):
            
 
             elif solver=='CBC':
-                prob.solve()
+                prob.solve(pulp.PULP_CBC_CMD(msg=0))
   
 
             #Construct Solution Graph
@@ -1798,7 +1798,7 @@ def solve_lpp_optimise(G,C,solver,level,maxedges):
            
 
             elif solver=='CBC':
-                prob.solve()
+                prob.solve(pulp.PULP_CBC_CMD(msg=0))
   
 
             #Construct Solution Graph
