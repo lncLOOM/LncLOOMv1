@@ -17,7 +17,7 @@ import subprocess
 try:
     from gurobipy import *
 except:
-    print("Note: Gurobi Solver Has Not Been Installed")
+    print "Note: Gurobi Solver Has Not Been Installed"
 from itertools import combinations
 
 def run_mafft_msa(outdir,project_name):
@@ -619,9 +619,24 @@ def solve_lpp(G,solver):
 
         #solve the lp-problem with the lp-solver of choice
         if solver=='GUROBI':
-            prob.solve(pulp.GUROBI(msg=0))
+            try:
+                prob.solve(pulp.GUROBI(msg=0))
+            except:
+                print "LncLOOM cannot find Gurobi Solver"
+                print "Check Gurobi License"
+                print "Try run LncLOOM with default solver"
+                sys.exit()
+
         elif solver=='CBC':
-            prob.solve(pulp.PULP_CBC_CMD(msg=0))
+            try:
+                prob.solve(pulp.PULP_CBC_CMD(msg=0))
+            except:
+                print "LncLOOM cannot find pulp solvers"
+                print "Check installation of pulp"
+                print "Try reinstall pulp using with the command: pip install -U git+https://github.com/coin-or/pulp"
+                print "Note, to ensure pulp is installed for python2 use the command: python-2 -m pip install -U git+https://github.com/coin-or/pulp"
+                print "If you are using Linux you may need to run the following command to activate the default solver: sudo pulptest"
+                sys.exit()
         #Construct Solution Graph
         for v in prob.variables():
             #if the edge got a score of 1 (meaning, it is within the solution):
@@ -705,12 +720,25 @@ def solve_lpp(G,solver):
 
         #solve the lp-problem with the lp-solver of choice
         if solver=='GUROBI':
-            prob.solve(pulp.GUROBI(msg=0))
+            try:
+                prob.solve(pulp.GUROBI(msg=0))
+            except:
+                print "LncLOOM cannot find Gurobi Solver"
+                print "Check Gurobi License"
+                print "Try run LncLOOM with default solver"
+                sys.exit()
 
 
         elif solver=='CBC':
-            prob.solve(pulp.PULP_CBC_CMD(msg=0))
-  
+            try:
+                prob.solve(pulp.PULP_CBC_CMD(msg=0))
+            except:
+                print "LncLOOM cannot find pulp solvers"
+                print "Check installation of pulp"
+                print "Try reinstall pulp using with the command: pip install -U git+https://github.com/coin-or/pulp"
+                print "Note, to ensure pulp is installed for python2 use the command: python-2 -m pip install -U git+https://github.com/coin-or/pulp"
+                print "If you are using Linux you may need to run the following command to activate the default solver: sudo pulptest"
+                sys.exit()
 
         #Construct Solution Graph
         F=nx.DiGraph()
@@ -1695,11 +1723,25 @@ def solve_lpp_optimise(G,C,solver,level,maxedges):
 
             #solve the lp-problem with the lp-solver of choice
             if solver=='GUROBI':
-                prob.solve(pulp.GUROBI(msg=0))
+                try:
+                    prob.solve(pulp.GUROBI(msg=0))
+                except:
+                    print "LncLOOM cannot find Gurobi Solver"
+                    print "Check Gurobi License"
+                    print "Try run LncLOOM with default solver"
+                    sys.exit()
            
 
             elif solver=='CBC':
-                prob.solve(pulp.PULP_CBC_CMD(msg=0))
+                try:
+                    prob.solve(pulp.PULP_CBC_CMD(msg=0))
+                except:
+                    print "LncLOOM cannot find pulp solvers"
+                    print "Check installation of pulp"
+                    print "Try reinstall pulp using with the command: pip install -U git+https://github.com/coin-or/pulp"
+                    print "Note, to ensure pulp is installed for python2 use the command: python-2 -m pip install -U git+https://github.com/coin-or/pulp"
+                    print "If you are using Linux you may need to run the following command to activate the default solver: sudo pulptest"
+                    sys.exit()
   
 
             #Construct Solution Graph
@@ -1794,11 +1836,25 @@ def solve_lpp_optimise(G,C,solver,level,maxedges):
 
             #solve the lp-problem with the lp-solver of choice
             if solver=='GUROBI':
-                prob.solve(pulp.GUROBI(msg=0))
+                try:
+                    prob.solve(pulp.GUROBI(msg=0))
+                except:
+                    print "LncLOOM cannot find Gurobi Solver"
+                    print "Check Gurobi License"
+                    print "Try run LncLOOM with default solver"
+                    sys.exit()
            
 
             elif solver=='CBC':
-                prob.solve(pulp.PULP_CBC_CMD(msg=0))
+                try:
+                    prob.solve(pulp.PULP_CBC_CMD(msg=0))
+                except:
+                    print "LncLOOM cannot find pulp solvers"
+                    print "Check installation of pulp"
+                    print "Try reinstall pulp using with the command: pip install -U git+https://github.com/coin-or/pulp"
+                    print "Note, to ensure pulp is installed for python2 use the command: python-2 -m pip install -U git+https://github.com/coin-or/pulp"
+                    print "If you are using Linux you may need to run the following command to activate the default solver: sudo pulptest"
+                    sys.exit()
   
 
             #Construct Solution Graph
