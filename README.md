@@ -159,6 +159,7 @@ Note that you can specify a different layer and genome to what is specified in  
         ```
         
         If `LD_LIBRARY_PATH` is not already set, use the following instead:
+        
         `export LD_LIBRARY_PATH="${GUROBI_HOME}/lib"`
         or
         `setenv LD_LIBRARY_PATH ${GUROBI_HOME}/lib`
