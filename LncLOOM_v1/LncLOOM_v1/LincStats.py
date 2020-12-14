@@ -235,11 +235,11 @@ def build_random_sequence_set(mp,iteration):
 
         random_sequences.append(random_seq)
 
-        w = open(outdir+"/"+project_name+"/Run_Files/Random_"+str(mp)+'_'+str(iteration+1)+".fasta",'w',0)
-        for i in range(len(random_sequences)):
-            w.write('>'+str(i+1)+'\n')
-            w.write(random_sequences[i]+'\n')
-        w.close()
+    w = open(outdir+"/"+project_name+"/Run_Files/Random_"+str(mp)+'_'+str(iteration+1)+".fasta",'w',0)
+    for i in range(len(random_sequences)):
+        w.write('>'+str(i+1)+'\n')
+        w.write(random_sequences[i]+'\n')
+    w.close()
             
     return random_sequences
 
