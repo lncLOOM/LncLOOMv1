@@ -210,7 +210,7 @@ Note that you can specify a different layer and genome to what is specified in  
   ```
 ## Defintions of Statistical values
 
-Definitions and troubleshooting tips for calculating motif significance are also given in Definitions.html:
+Definitions and troubleshooting tips for calculating motif significance are also given in [Definitions.html](https://github.com/lncLOOM/lncLOOM/edit/master/Definitions.html):
 
 E(i): Probability of finding the exact motif, at the same depth, in a random set of sequences that have the same percentage identity as the input sequences
 
