@@ -208,10 +208,20 @@ Note that you can specify a different layer and genome to what is specified in  
   ```
   LncLOOM --fasta <path to file of sequences> --pname <name of directory> --targetscan --eclip --iterations 100 --multiprocess 6 --track
   ```
+## Defintions of Statistical values
+
+Definitions and troubleshooting tips for calculating motif significance are also given in Definitions.html:
+
+E(i): Probability of finding the exact motif, at the same depth, in a random set of sequences that have the same percentage identity as the input sequences
+
+P(i): Probability of finding any combination of the same number of motifs of the same length, or longer, at the same depth, in a random set of sequences that have the same percentage identity as the input sequences
+
+E(r): Probability of finding the exact motif, at the same depth, in a random set of sequences that have the dinucleotide composition as the input sequences
+
+P(r): Probability of finding any combination of the same number of motifs of the same length, or longer, at the same depth, in a random set of sequences that have the same dinucleotide composition as the input sequences
 
 
 ## All LncLOOM Options
-
 LncLOOM has several options:
 
 ### Required arguments
