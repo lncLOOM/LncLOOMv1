@@ -225,6 +225,10 @@ def parse_fasta_file(outdir,project_name,file_location,uracil):
                 seq_line = "".join(seq_data[iterSeq].split())
                 seq += seq_line.strip().upper()
                 iterSeq = iterSeq+1
+
+            seq_clean = [b for b in seq if b in ['A','G','C','T','U','X']]
+            seq = "".join(seq_clean)
+
             
             if uracil:
                 seq = seq.replace('T','U')

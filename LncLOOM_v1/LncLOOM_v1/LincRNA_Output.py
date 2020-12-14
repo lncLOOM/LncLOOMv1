@@ -176,8 +176,11 @@ def colour_kmers_in_seq_html_2(sequence,overlapping_nodes,colours_dict,overlap_f
                     submenu='<br><span style="font-size:14px;line-height:0.5;padding: 12px 16px;color:black">Depth:'+str(Depth_of_kmers[nodeID[2]][0])+' ('+Depth_of_kmers[nodeID[2]][1]+')</span><br>'
                     significant = True
                     if stats_dict:
-                        if float(stats_dict[nodeID[2]][1])>0.05 or float(stats_dict[nodeID[2]][3])>0.05 or float(stats_dict[nodeID[2]][2])>0.05 or float(stats_dict[nodeID[2]][4])>0.05:
-                            significant = False
+                        try:
+                            if float(stats_dict[nodeID[2]][1])>0.05 or float(stats_dict[nodeID[2]][3])>0.05 or float(stats_dict[nodeID[2]][2])>0.05 or float(stats_dict[nodeID[2]][4])>0.05:
+                                significant = False
+                        except:
+                            significant = False 
                         submenu+='<span style="font-size:14px;line-height:0.5;padding: 12px 16px;color:black">E<sub>i</sub>-value:'+stats_dict[nodeID[2]][1]+', P<sub>i</sub>-value:'+stats_dict[nodeID[2]][2]+'</span>'
                         submenu+='<br><span style="font-size:14px;line-height:0.5;padding: 12px 16px;color:black">E<sub>r</sub>-value:'+stats_dict[nodeID[2]][3]+', P<sub>r</sub>-value:'+stats_dict[nodeID[2]][4]+'</span><br>'
                     significance[b]=significant
@@ -384,8 +387,11 @@ def colour_kmers_in_seq_html(sequence,overlapping_nodes,colours_dict,overlap_fla
                 submenu='<br><span style="font-size:14px;line-height:0.5;padding: 12px 16px;color:black">Depth:'+str(Depth_of_kmers[nodeID[2]][0])+' ('+Depth_of_kmers[nodeID[2]][1]+')</span><br>'
                 significant = True
                 if stats_dict:
-                    if float(stats_dict[nodeID[2]][1])>0.05 or float(stats_dict[nodeID[2]][3])>0.05 or float(stats_dict[nodeID[2]][2])>0.05 or float(stats_dict[nodeID[2]][4])>0.05:
-                        significant = False
+                    try:
+                        if float(stats_dict[nodeID[2]][1])>0.05 or float(stats_dict[nodeID[2]][3])>0.05 or float(stats_dict[nodeID[2]][2])>0.05 or float(stats_dict[nodeID[2]][4])>0.05:
+                            significant = False
+                    except:
+                        significant = False 
                     submenu+='<span style="font-size:14px;line-height:0.5;padding: 12px 16px;color:black">E<sub>i</sub>-value:'+stats_dict[nodeID[2]][1]+', P<sub>i</sub>-value:'+stats_dict[nodeID[2]][2]+'</span>'
                     submenu+='<br><span style="font-size:14px;line-height:0.5;padding: 12px 16px;color:black">E<sub>r</sub>-value:'+stats_dict[nodeID[2]][3]+', P<sub>r</sub>-value:'+stats_dict[nodeID[2]][4]+'</span><br>'
 
@@ -609,8 +615,11 @@ def write_modules(Modules,headers,colours_dict,AnnotationsDict,outdir,project_na
                         submenu='<br><span style="font-size:14px;line-height:0.5;padding: 12px 16px;color:black">Depth:'+str(Depth_of_kmers[nodeID[2]][0])+' ('+Depth_of_kmers[nodeID[2]][1]+')</span><br>'
                         significant = True
                         if stats_dict:
-                            if float(stats_dict[nodeID[2]][1])>0.05 or float(stats_dict[nodeID[2]][3])>0.05 or float(stats_dict[nodeID[2]][2])>0.05 or float(stats_dict[nodeID[2]][4])>0.05:
-                                significant = False
+                            try:
+                                if float(stats_dict[nodeID[2]][1])>0.05 or float(stats_dict[nodeID[2]][3])>0.05 or float(stats_dict[nodeID[2]][2])>0.05 or float(stats_dict[nodeID[2]][4])>0.05:
+                                    significant = False
+                            except:
+                                significant = False 
                             submenu+='<span style="font-size:14px;line-height:0.5;padding: 12px 16px;color:black">E<sub>i</sub>-value:'+stats_dict[nodeID[2]][1]+', P<sub>i</sub>-value:'+stats_dict[nodeID[2]][2]+'</span>'
                             submenu+='<br><span style="font-size:14px;line-height:0.5;padding: 12px 16px;color:black">E<sub>r</sub>-value:'+stats_dict[nodeID[2]][3]+', P<sub>r</sub>-value:'+stats_dict[nodeID[2]][4]+'</span><br>'
                         significance[b]=significant
@@ -768,8 +777,11 @@ def write_modules(Modules,headers,colours_dict,AnnotationsDict,outdir,project_na
                         submenu='<br><span style="font-size:14px;line-height:0.5;padding: 12px 16px;color:black">Depth:'+str(Depth_of_kmers[nodeID[2]][0])+' ('+Depth_of_kmers[nodeID[2]][1]+')</span><br>'
                         significant = True
                         if stats_dict:
-                            if float(stats_dict[nodeID[2]][1])>0.05 or float(stats_dict[nodeID[2]][3])>0.05 or float(stats_dict[nodeID[2]][2])>0.05 or float(stats_dict[nodeID[2]][4])>0.05:
-                                significant = False
+                            try:
+                                if float(stats_dict[nodeID[2]][1])>0.05 or float(stats_dict[nodeID[2]][3])>0.05 or float(stats_dict[nodeID[2]][2])>0.05 or float(stats_dict[nodeID[2]][4])>0.05:
+                                    significant = False
+                            except:
+                                significant = False 
                             submenu+='<span style="font-size:14px;line-height:0.5;padding: 12px 16px;color:black">E<sub>i</sub>-value:'+stats_dict[nodeID[2]][1]+', P<sub>i</sub>-value:'+stats_dict[nodeID[2]][2]+'</span>'
                             submenu+='<br><span style="font-size:14px;line-height:0.5;padding: 12px 16px;color:black">E<sub>r</sub>-value:'+stats_dict[nodeID[2]][3]+', P<sub>r</sub>-value:'+stats_dict[nodeID[2]][4]+'</span><br>'
                         significance[b]=significant
@@ -927,8 +939,11 @@ def write_modules(Modules,headers,colours_dict,AnnotationsDict,outdir,project_na
                         submenu='<br><span style="font-size:14px;line-height:0.5;padding: 12px 16px;color:black">Depth:'+str(Depth_of_kmers[nodeID[2]][0])+' ('+Depth_of_kmers[nodeID[2]][1]+')</span><br>'
                         significant = True
                         if stats_dict:
-                            if float(stats_dict[nodeID[2]][1])>0.05 or float(stats_dict[nodeID[2]][3])>0.05 or float(stats_dict[nodeID[2]][2])>0.05 or float(stats_dict[nodeID[2]][4])>0.05:
-                                significant = False
+                            try:
+                                if float(stats_dict[nodeID[2]][1])>0.05 or float(stats_dict[nodeID[2]][3])>0.05 or float(stats_dict[nodeID[2]][2])>0.05 or float(stats_dict[nodeID[2]][4])>0.05:
+                                    significant = False
+                            except:
+                                significant = False 
                             submenu+='<span style="font-size:14px;line-height:0.5;padding: 12px 16px;color:black">E<sub>i</sub>-value:'+stats_dict[nodeID[2]][1]+', P<sub>i</sub>-value:'+stats_dict[nodeID[2]][2]+'</span>'
                             submenu+='<br><span style="font-size:14px;line-height:0.5;padding: 12px 16px;color:black">E<sub>r</sub>-value:'+stats_dict[nodeID[2]][3]+', P<sub>r</sub>-value:'+stats_dict[nodeID[2]][4]+'</span><br>'
                         significance[b]=significant

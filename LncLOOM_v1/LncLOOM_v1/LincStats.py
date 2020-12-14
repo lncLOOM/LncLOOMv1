@@ -410,8 +410,8 @@ def run_stats_msa(iterations,nol,kdict,outd,pname,klen,sw,seq_len,pr,sol,mdepth,
         kmers = list(dict.fromkeys(kmers)) #removes repeat elements
         for kmer in kmers:
             Depth_of_kmers[kmer] = level
-    if 1==1:
-    #try:
+    #if 1==1:
+    try:
         
         if mafft:
             aligned_seqs = extract_msa()
@@ -447,8 +447,8 @@ def run_stats_msa(iterations,nol,kdict,outd,pname,klen,sw,seq_len,pr,sol,mdepth,
             for kmer in Depth_of_kmers:
                 Pvalue1[kmer] = "Undefined"
                 Pvalue2[kmer] = "Undefined"
-    else:
-    #except:
+    #else:
+    except:
         for kmer in Depth_of_kmers:
             Pvalue1[kmer] = "Undefined"
             Pvalue2[kmer] = "Undefined"
@@ -683,8 +683,8 @@ def run_stats_random(iterations,nol,kdict,outd,pname,klen,sw,seq,seq_len,pr,sol,
         #kmers = list(dict.fromkeys(kmers)) #removes repeat elements
         for kmer in kmers:
             Depth_of_kmers[kmer] = level
-    if 1==1:       
-    #try:
+    #if 1==1:       
+    try:
         #split total iterations into subprocesses for multicore processing
         
         pool = Pool(processes=multiprocess)
@@ -711,8 +711,8 @@ def run_stats_random(iterations,nol,kdict,outd,pname,klen,sw,seq,seq_len,pr,sol,
             Pvalue1[kmer] = "{:.3f}".format(float(count_similar_kmers[depth][len(kmer)])/iterations)
             #Total occurances of a motif with k_len or greater at level=depth
             Pvalue2[kmer] = "{:.3f}".format((count_exact_kmers[depth][kmer])/iterations)
-    else:
-    #except: #if error occurs
+    #else:
+    except: #if error occurs
         for kmer in Depth_of_kmers:
             Pvalue1[kmer] = "Undefined"
             Pvalue2[kmer] = "Undefined"
