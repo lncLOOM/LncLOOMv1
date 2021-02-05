@@ -10,7 +10,7 @@ deeply conserved in rapidly evolving sequences. The integer programming problems
 LncLOOM has been implemented in Python 2 and Python 3 and is supported on Linux/Unix-based systems:
 * [LncLOOMv1.0](https://github.com/lncLOOM/lncLOOM) implemented in Python 2
 
-     Download: `git clone https://github.com/lncLOOM/lncLOOM.git`
+     **Download: `git clone https://github.com/lncLOOM/lncLOOM.git`
      
      [How to install and run LncLOOMv1.0](https://github.com/lncLOOM/lncLOOM/blob/master/README.md)
 
