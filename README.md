@@ -26,7 +26,7 @@ systems.
    Python 2 is available for download at:
    <A HREF="https://www.python.org/downloads/">here</A>
 
-3. Install LncLOOM as an executable using pip or pip3.
+3. Install LncLOOM as an executable using pip.
 
    * Firstly ensure that [pip](https://pypi.org/project/pip/) is installed:
    
