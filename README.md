@@ -8,7 +8,7 @@ Developed and maintained by [Caroline Ross](mailto:caroline-jane.ross@weizmann.a
 
 ## About lncLOOM
 lncLOOM is a graph-based framework that uses integer programming to identify combinations of short motifs that are 
-deeply conserved in rapidly evolving sequences. It is implemented in Python 2 and is supported on Linux/Unix-based
+deeply conserved in rapidly evolving sequences. It is implemented in Python 2:  and is supported on Linux/Unix-based
 systems. 
 
 ## Getting Started
