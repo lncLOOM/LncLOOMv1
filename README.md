@@ -17,9 +17,9 @@ systems.
 
 1. Download the lncLOOM repository.
 
-   `git clone https://github.com/lncLOOM/lncLOOM.git`
+   `git clone https://github.com/lncLOOM/LncLOOMv1.git`
    
-   `cd lncLOOM`
+   `cd LncLOOMv1`
 
 2. Install Python 2 (If needed)
    LncLOOM is supported on Linux/Unix-based systems. It is run via the command line. 
