@@ -271,34 +271,38 @@ def main():
             b = open(tfile,'r')
             blines = b.readlines()
             b.close()
-            query = blines[0].split(':')
-            if (query[0].strip()).upper()=="QUERY LAYER":
-                if int(query[1].strip())>0 and int(query[1].strip())<=len(sequences):
-                    track_query = int(query[1].strip())
+            try:
+                query = blines[0].split(':')
+                if (query[0].strip()).upper()=="QUERY LAYER":
+                    if int(query[1].strip())>0 and int(query[1].strip())<=len(sequences):
+                        track_query = int(query[1].strip())
+                    else:
+                        print "ERROR! Query layer specified for track output is not in graph"
+                        format_file = False
                 else:
-                    print "ERROR! Query layer specified for track output is not in graph"
+                    print "ERROR! for_track_output.txt format is incorrect"
                     format_file = False
-            else:
-                print "ERROR! for_track_output.txt format is incorrect"
-                format_file = False
 
-            query = blines[1].split(':')
-            if (query[0].strip()).upper()=="BLAT":
-                if os.path.isfile(query[1].strip()):
-                    track_method = "BLAT"
-                    genome = query[1].strip()
+                query = blines[1].split(':')
+                if (query[0].strip()).upper()=="BLAT":
+                    if os.path.isfile(query[1].strip()):
+                        track_method = "BLAT"
+                        genome = query[1].strip()
+                    else:
+                        print "ERROR! File not found: "+query[1].strip()
+                        format_file = False
+                elif (query[0].strip()).upper()=="BED":
+                    if os.path.isfile(query[1].strip()):
+                        track_method = "BED"
+                        track_bed = query[1].strip()
+                    else:
+                        print "ERROR! File not found: "+query[1].strip()
+                        format_file = False
                 else:
-                    print "ERROR! File not found: "+query[1].strip()
+                    print "ERROR! for_track_output.txt format is incorrect"
                     format_file = False
-            elif (query[0].strip()).upper()=="BED":
-                if os.path.isfile(query[1].strip()):
-                    track_method = "BED"
-                    track_bed = query[1].strip()
-                else:
-                    print "ERROR! File not found: "+query[1].strip()
-                    format_file = False
-            else:
-                print "ERROR! for_track_output.txt format is incorrect"
+            except:
+                print "Format of for_track_output.txt incorrect. Track output not generated"
                 format_file = False
 
         psl_file = ''
@@ -315,6 +319,7 @@ def main():
         #Get a tuple containing 0)the main LncLOOM graph and 1) a dictionary of graphs where nodes have conservation to each layer 
         Motif_Graph_Levels,MainGraph,Main_LOOM_Level,LOOM5,LOOM3,LOOM5_Levels,LOOM3_Levels,details5,details3 = SM.start_lncLOOM(sequences,seq_lengths,kmers_len,stopw,hsps,solver,prune,min_depth,shorttandem,maxedges,noconstraints,tolerance)
         Modules = SM.get_modules(Main_LOOM_Level, LOOM5_Levels, LOOM3_Levels,number_of_layers)
+
 
         #Motif_Graph_Levels = Motif_Graph_All[1]
         print "\n==============================================================\nMOTIFS DISCOVERY SUCCESSFUL\n"
@@ -409,8 +414,11 @@ def main():
             eCLIP_Path_names = []
             #Obtain values from file:
             for line in elines:
-                case = ((line.split(':')[0]).strip()).upper()
-                value = (line.split(':')[1]).strip()
+                try:
+                    case = ((line.split(':')[0]).strip()).upper()
+                    value = (line.split(':')[1]).strip()
+                except:
+                    continue
                 if case =='BLAT':
                     if os.path.isfile(value):
                         genome = value
