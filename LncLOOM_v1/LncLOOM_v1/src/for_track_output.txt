@@ -1,3 +1,3 @@
 Query Layer: 1
-Blat: /home/caroline/hg19.fa
+Blat: src/hg19.fa
 Bed:
