@@ -285,18 +285,22 @@ def main():
 
                 query = blines[1].split(':')
                 if (query[0].strip()).upper()=="BLAT":
-                    if os.path.isfile(query[1].strip()):
+                    genome = os.path.join(os.path.dirname(__file__),*(query[1].strip()).split('/'))
+                    if os.path.isfile(genome):
                         track_method = "BLAT"
-                        genome = query[1].strip()
+                        
                     else:
                         print "ERROR! File not found: "+query[1].strip()
+                        genome = ''
                         format_file = False
                 elif (query[0].strip()).upper()=="BED":
-                    if os.path.isfile(query[1].strip()):
+                    track_bed = os.path.join(os.path.dirname(__file__),*(query[1].strip()).split('/'))
+                    if os.path.isfile(track_bed):
                         track_method = "BED"
-                        track_bed = query[1].strip()
+                        
                     else:
                         print "ERROR! File not found: "+query[1].strip()
+                        track_bed = ''
                         format_file = False
                 else:
                     print "ERROR! for_track_output.txt format is incorrect"
@@ -417,6 +421,8 @@ def main():
                 try:
                     case = ((line.split(':')[0]).strip()).upper()
                     value = (line.split(':')[1]).strip()
+                    if case!='QUERY LAYER':
+                        value = os.path.join(os.path.dirname(__file__),*(((line.split(':')[1]).strip()).split('/')))
                 except:
                     continue
                 if case =='BLAT':
@@ -435,7 +441,7 @@ def main():
                 elif case =='ECLIP':
                     eCLIP_Path_names.append(value)
                     try:
-                        e_path = (line.split(':')[2]).strip()
+                        e_path = os.path.join(os.path.dirname(__file__),*(((line.split(':')[2]).strip()).split('/')))
                         if os.path.exists(e_path):
                             eCLIP_Paths.append(e_path)
                         else:
