@@ -138,7 +138,7 @@ Note that you can specify a different layer and genome to what is specified in  
          
 7. Make sure that the blat executable has the correct executable permissions:
 
-   `chmod 755 LncLOOMv2/LncLOOMv2/src/blat`
+   `chmod 755 LncLOOM_v1/LncLOOM_v1/src/blat`
          
 8. OPTIONAL: Install the [Gurobi Solver](https://www.gurobi.com/) - although not required it allows much faster performance on larger datasets
    There are two possible ways to install Gurobi:
