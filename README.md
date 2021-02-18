@@ -139,8 +139,13 @@ Note that you can specify a different layer and genome to what is specified in  
 7. Make sure that the blat executable has the correct executable permissions:
 
    `chmod 755 LncLOOM_v1/LncLOOM_v1/src/blat`
+   
+8. Make sure that the blat executable is compatible with your machine type:
+
+   The blat executable in the src folder is compatible with linux.x86_64 machines.
+   If needed [download](http://hgdownload.soe.ucsc.edu/admin/exe/) the correct executable for your machine type
          
-8. OPTIONAL: Install the [Gurobi Solver](https://www.gurobi.com/) - although not required it allows much faster performance on larger datasets
+9. OPTIONAL: Install the [Gurobi Solver](https://www.gurobi.com/) - although not required it allows much faster performance on larger datasets
    There are two possible ways to install Gurobi:
    - Option 1: Install through [Anaconda](https://www.gurobi.com/gurobi-and-anaconda-for-linux/).  
      - If needed download and install [Anaconda](https://www.anaconda.com/products/individual)  
