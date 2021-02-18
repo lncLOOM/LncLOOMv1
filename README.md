@@ -143,7 +143,7 @@ Note that you can specify a different layer and genome to what is specified in  
 8. Make sure that the blat executable is compatible with your machine type:
 
    The blat executable in the src folder is compatible with linux.x86_64 machines.
-   If needed [download](http://hgdownload.soe.ucsc.edu/admin/exe/) the correct executable for your machine type
+   If needed download the correct executable for your machine type from [Genome Browser software](http://hgdownload.soe.ucsc.edu/admin/exe/).
          
 9. OPTIONAL: Install the [Gurobi Solver](https://www.gurobi.com/) - although not required it allows much faster performance on larger datasets
    There are two possible ways to install Gurobi:
