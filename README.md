@@ -266,7 +266,7 @@ LncLOOM has several options:
 
 ### Optional arguments 
 
-* `--similarity` type is a float, removes all sequences that have identity higher than the specification. Default=100.00
+* `--similarity` type is a float, removes all duplicate sequences that have identity higher than the specification. Default=100.00
 
 * `--mindepth` LncLOOM will only find motifs that are conserved to this depth. Default=2
 
@@ -293,6 +293,8 @@ LncLOOM has several options:
 * `--tol5`: Tolerance step from median postion of first and last nodes to determine exclusion from 5' extension graphs. Default = 0.50
     
 * `--tol3`: Tolerance step from median postion of first and last nodes to determine exclusion from 3' extension graphs. Default = 0.50
+* 
+* `--blatID`: Type is a float. Minimum percentage identity required for the query sequence to match the genome, when Blat is run. Default = 95
 
 
 ### BOOLEAN OPTIONS
