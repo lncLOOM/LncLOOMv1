@@ -232,8 +232,9 @@ def run_blat(outdir,project_name,default_head,default_seq,genome):
 
 
 
-def parse_psl(psl_file,default_seq):
+def parse_psl(psl_file,default_seq,blat_percent):
 
+    match_cutoff = blat_percent/100.00 #make user defined parameter
     num_of_exons = 0
     exon_sizes = []
     exon_pos_seq = []
@@ -251,15 +252,15 @@ def parse_psl(psl_file,default_seq):
     
         
         #Check if a match was found:
-        if len(psl_output)==5:
-            print "SEQUENCE HAD NO SIGNIFICANT ALIGNMENT TO GENOME"
+        if len(psl_output)<=5:
+            print "QUERY SEQUENCE HAD NO SIGNIFICANT ALIGNMENT TO GENOME DETECTED BY BLAT"
             aligned = False
         else: #get the output for the top hit
             hits = psl_output[5:]
             for h in range(len(hits)):
                 hits[h] = hits[h].split()
                 hits[h][0]=int(hits[h][0])
-            hits = sorted(hits,key=itemgetter(0))
+            hits = sorted(hits,key=itemgetter(0))#sorts by number of bases matched
             hit_found = False
             i = len(hits)-1
             #find the top hit where exon sizes match the query sequence length
@@ -272,11 +273,15 @@ def parse_psl(psl_file,default_seq):
                 exon_pos_seq = map(int,top_hit[19].strip().strip(',').split(','))
                 exon_pos_chrom = map(int,top_hit[20].strip().strip(',\n').split(','))
                 len_exons = sum(exon_sizes)
+                matched_bases = float(top_hit[0])
                 if len_exons==len(default_seq):
                     hit_found=True
+                elif matched_bases/len(default_seq)>=match_cutoff:
+                    hit_found=True
+                    
                 i-=1
             if not hit_found:
-                print "ERROR!!! No matches from BLAT obtained...\n"
+                print "ERROR!!! No matches from BLAT found with at least "+str(match_cutoff*100)+"% identity to genome...\n"
                 aligned = False
 
     except Exception as e:
@@ -329,7 +334,7 @@ def parse_bedFile(bedfile,sequence):
   
     len_exons = sum(exon_sizes)
     if len(sequence)!=len_exons:
-        print "\nERROR! BED FILE IS NOT COMPATABLE WITH LENGTH OF QUERY SEQUENCE\nRECOMMENDATIONS:\n1)RUN WITH BLAT!!!\n"
+        print "\nERROR! EXON SIZES IN BED FILE DOES NOT MATCH LENGTH OF QUERY SEQUENCE\nRECOMMENDATIONS:\n1)RUN WITH BLAT\n2)EDIT BEDFILE SO THAT TOTAL LENGTH OF EXONS = LENGTH OF QUERY SEQUENCE"
         parsed = False
         num_of_exons = 0
         exon_sizes = []
