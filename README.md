@@ -293,7 +293,7 @@ LncLOOM has several options:
 * `--tol5`: Tolerance step from median postion of first and last nodes to determine exclusion from 5' extension graphs. Default = 0.50
     
 * `--tol3`: Tolerance step from median postion of first and last nodes to determine exclusion from 3' extension graphs. Default = 0.50
-* 
+
 * `--blatID`: Type is a float. Minimum percentage identity required for the query sequence to match the genome, when Blat is run. Default = 95
 
 
