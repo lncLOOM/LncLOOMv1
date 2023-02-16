@@ -66,38 +66,53 @@ def calculate_similarity(seq1,seq2):
 
 
 def getIdenticalSequences(sequences):
-    print "Excluding identical sequences..."
+    print("Excluding identical sequences...")
     total = len(sequences)
 
+    dict_sequences = {s:[] for s in sequences}
+    for i in range(total):
+        dict_sequences[sequences[i]].append(i)
+
     similar = []
+    repeats = [s for s in dict_sequences if len(dict_sequences[s])>1]
+    for s in repeats:
+        similar.extend(dict_sequences[s][1:])
+
+    '''similar = []
     for i in [x for x in range(total-1) if x not in similar]:
         for j in [x for x in range(i+1,total) if x not in similar]:
             if sequences[i]==sequences[j]:
-                similar.append(j)
+                similar.append(j)'''
 
     return similar
 
 
 def getSimilarSequences(aligned,similarity_cutoff):
-    print 'Excluding sequences with >'+str(similarity_cutoff)+' identity...'
+    print('Excluding sequences with >'+str(similarity_cutoff)+' identity...')
     total = len(aligned)
 
+    dict_sequences = {s:[] for s in aligned}
+    for i in range(total):
+        dict_sequences[aligned[i]].append(i)
+
     similar = []
-    for i in [x for x in range(total-1) if x not in similar]:
-        for j in [x for x in range(i+1,total) if x not in similar]:
-            if aligned[i]==aligned[j]:
-                similar.append(j)
+    repeats = [s for s in dict_sequences if len(dict_sequences[s])>1]
+    for s in repeats:
+        similar.extend(dict_sequences[s][1:])
 
 
-    for i in [x for x in range(total-1) if x not in similar]:
-        for j in [x for x in range(i+1,total) if x not in similar]:
-            seqI = aligned[i]
-            seqJ = aligned[j]
-            similarity = calculate_similarity(seqI,seqJ)
-            if similarity>similarity_cutoff:
-                similar.append(j)
+    remaining = [x for x in range(total-1) if x not in similar]
 
-    return similar         
+    for i in remaining:
+        for j in remaining:
+            if i!=j:
+                seqI = aligned[i]
+                seqJ = aligned[j]
+                similarity = calculate_similarity(seqI,seqJ)
+                if similarity>similarity_cutoff:
+                    similar.append(j)
+
+    return similar    
 
 
 def exlcudeSimilarSequences(outdir,project_name,sequences,headers,seq_lengths,intron_indices,mafft,similarity):
